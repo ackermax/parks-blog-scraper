@@ -1,9 +1,16 @@
 $(document).ready(function(){
     $(".art-scrape").click(function(e){
         e.preventDefault();
-        console.log("click!")
-        $.get("/scrape").then(function(result){
-            console.log(result);
+        $(this).addClass("disabled");
+        $.get("/scrape").then(function(){
+            location.reload();
+        });
+    });
+    $(".save-article").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr("data-id");
+        $.get("/save/" + id).then(function(){
+            Materialize.toast("Article saved!", 3000);
         });
     });
 });

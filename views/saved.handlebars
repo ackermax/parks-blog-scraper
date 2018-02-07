@@ -24,24 +24,18 @@
                 <i class="material-icons">menu</i>
             </a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li class="active">
+                <li>
                     <a href="/">Home</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/saved">Saved Articles</a>
-                </li>
-                <li>
-                    <a href="/scrape" class="waves-effect waves-light btn deep-purple">Scrape Articles</a>
                 </li>
             </ul>
             <ul class="side-nav" id="mobile-menu">
                 <li>
-                    <a href="/scrape" class="waves-effect waves-light btn deep-purple">Scrape Articles</a>
-                </li>
-                <li class="active">
                     <a href="/">Home</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/saved">Saved Articles</a>
                 </li>
             </ul>
@@ -53,14 +47,14 @@
             <div class="row white z-depth-2">
                 {{#if dbArticle}}
                 <div class="col s12">
-                    <h3 class="brand-logo">Articles</h3>
+                    <h3 class="brand-logo">Saved Articles</h3>
                     <div class="divider"></div>
                 </div>
                 {{#each dbArticle}}
                 <div class="col s12">
                     <div class="card horizontal blue darken-2">
                         <div class="card-image">
-                            <img src="test.jpg" class="responsive-img">
+                            <img src="{{picture}}" class="responsive-img">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -70,26 +64,29 @@
                                 <h5>By {{author}}</h5>
                             </div>
                             <div class="card-action">
-                                <a href="{{link}}" class="waves-effect waves-light btn orange link-article">Link To Article</a>
-                                <a href="#" class="waves-effect waves-light btn teal save-article right" data-id="{{_id}}">Save article</a>
+                                <a href="{{link}}" target="_blank" class="waves-effect waves-light btn orange link-article">Link To Article</a>
+                                <a href="#" class="waves-effect waves-light btn red delete-article right" data-id="{{_id}}">Delete Article</a>
+                                <a href="#" class="waves-effect waves-light btn teal notes-article center" data-id="{{_id}}">Notes</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                {{/each}}
-                {{else}}
+                {{/each}} {{else}}
                 <div class="col s12">
-                    <h3 class="center">No articles here. Scrape some!</h3>
+                    <h3 class="center">No articles saved. Go save some!</h3>
                 </div>
                 {{/if}}
-
+            </div>
+        </div>
+        <div id="modal1" class="modal">
+            <div class="modal-content" id="notes">
+                <h4>Notes</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Close</a>
             </div>
         </div>
     </main>
-    <footer class="page-footer blue darken-2">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2018 Max Ackerman
-                <a class="grey-text text-lighten-4 right" target="_blank" href="https://disneyparks.disney.go.com/blog">Disney Parks Blog</a>
-            </div>
-        </div>
+    <script src="js/saved.js"></script>
